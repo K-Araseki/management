@@ -5,11 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PointDAO {
+
     private static final String URL = "jdbc:h2:~/h2db/management;AUTO_SERVER=TRUE;MODE=PostgreSQL";
     private static final String USER_NAME = "b2190080";
     private static final String USER_PASS = "b2190080";
 
-    public int insertGrade(int id,int grade,String season,String subject,int point) throws SQLException{
+    public int insertPoint(int id,int grade,String season,String subject,int point) throws SQLException{
         String sql = "insert into 得点表 values (?, ?, ?, ?, ?)";
         int n = 0;
         try (Connection conn = DriverManager.getConnection(URL,USER_NAME,USER_PASS);
@@ -24,7 +25,7 @@ public class PointDAO {
         return n;
     }
 
-    public int deletePreExam(int id,int grade,String season,String subject) throws SQLException {
+    public int deletePoint(int id,int grade,String season,String subject) throws SQLException {
         String sql = "delete from 得点表 where 生徒ID = ? and 学年 = ? and 時期 = ? and 科目 = ?";
         int n = 0;
         try (Connection conn = DriverManager.getConnection(URL, USER_NAME, USER_PASS);
@@ -38,7 +39,7 @@ public class PointDAO {
         return n;
     }
 
-    public int updateGrade(int id,int grade,String season,String subject,int point) throws SQLException{
+    public int updatePoint(int id,int grade,String season,String subject,int point) throws SQLException{
         String sql = "update 得点表 set 点数 = ? where 生徒ID = ? and 学年 = ? and 時期 = ? and 科目 = ?";
         int n = 0;
         try (Connection conn = DriverManager.getConnection(URL,USER_NAME,USER_PASS);

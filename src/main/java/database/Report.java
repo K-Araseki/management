@@ -39,4 +39,5 @@ public class Report {
     public String getComment() {
         return comment;
     }
+
 }

@@ -1,16 +1,14 @@
-import database.Point;
-import database.PointDAO;
-import database.Report;
 import database.SubjectDAO;
 
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Scanner;
 
-public class SelectReport {
-    public static void select(){
-        System.out.println("ログインIDを入力");
+public class DeleteReport {
+    public static void delete(){
         Scanner scan = new Scanner(System.in);
+        System.out.println("授業内容を削除");
+
+        System.out.println("ログインIDを入力");
         int logId = Integer.valueOf(scan.nextLine());
         System.out.println("生徒IDを入力");
         int studentId = Integer.valueOf(scan.nextLine());
@@ -21,13 +19,17 @@ public class SelectReport {
 
         try {
             SubjectDAO dao = new SubjectDAO();
-            List<Report> reports = dao.selectPreExams(logId,studentId,date,subject);
-            for (Report report  : reports){
-                report.print();
+            int n = dao.deleteReport(logId,studentId,date,subject);
+            if (n == 1){
+                System.out.println("削除完了！");
+            }
+            else {
+                System.out.println("もう一度始めから入力");
             }
         }catch (SQLException e){
             e.printStackTrace();
         }
-    }
 
+        return;
+    }
 }
