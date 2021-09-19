@@ -5,7 +5,7 @@ public class Control {
         Scanner scan = new Scanner(System.in);
         while (true){
             System.out.println("ログインIDの追加　or　パスワードの変更　or　得点の入力　or　得点の修正　or" + "　得点確認　" +
-                    "or　得点の削除　or　授業内容の登録　or　授業内容の修正　or　授業内容の確認　or　授業内容の削除　を入力\nやめる場合は　終了　を入力");
+                    "or　得点の削除　or　授業内容の登録　or　授業内容の修正　or　授業内容の確認　or　授業内容の削除 or　生徒情報の登録　を入力\nやめる場合は　終了　を入力");
             String key = scan.nextLine();
             if (key.equals("ログインIDの追加")){
                 AddID.add();
@@ -36,6 +36,9 @@ public class Control {
             }
             else if (key.equals("授業内容の削除")){
                 DeleteReport.delete();
+            }
+            else if (key.equals("生徒情報の登録")){
+                AddStudent.add();
             }
             else if (key.equals("終了")){
                 break;
